@@ -1,17 +1,12 @@
 # seattle_2
 
 
-ENTREGABLE 1
+LIMPIEZA
 
-NOMBRES DEL GRUPO
-
-TEMA DE INVESTIGACION;
+BASE DA DATOS UNIFICADA:
 
 
 
+[idh.xlsx](https://github.com/taiyonoJoel/seattle_2/files/9889511/idh.xlsx)
 
 
-METADAT
-
-Archivo1
-aca esta la variable dependiente, 
