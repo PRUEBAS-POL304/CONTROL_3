@@ -4,9 +4,8 @@
 LIMPIEZA
 
 BASE DA DATOS UNIFICADA:
+[idh.csv](https://github.com/taiyonoJoel/seattle_2/files/9889548/idh.csv)
 
 
-
-[idh.xlsx](https://github.com/taiyonoJoel/seattle_2/files/9889511/idh.xlsx)
 
 
