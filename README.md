@@ -3,15 +3,11 @@
 
 LIMPIEZA
 
-BASE DA DATOS UNIFICADA:
-
-[idh.csv](https://github.com/taiyonoJoel/seattle_2/files/9889869/idh.csv)
+BASE DA DATOS IDH: EN INGLES, SE BORRARON COLUMNAS Y FILAS, Y SE RENOMBRARON EN EXCEL, LUEGO SE SUBIO A GITHUB
 
 
 
-BASE DA DATOS UNIFICADA:
-
-[idhdemo.csv](https://github.com/taiyonoJoel/seattle_2/files/9889906/idhdemo.csv)
+BASE DE DATOS UNIFICADA: idhdemo (INDEX + IDH) --> LA LIMPIEZA ESTÁ EN EL RMD "CL3"
 
 
 
