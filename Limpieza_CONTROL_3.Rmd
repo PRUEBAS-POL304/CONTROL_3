@@ -1,0 +1,88 @@
+---
+title: "Limpieza CONTROL_3"
+author: "Joel"
+date: "2022-10-28"
+output: html_document
+---
+
+  - Índice de Democracia + IDH: 
+  
+```{r}
+rm(list = ls())
+
+library(htmltab)
+
+WhereDEMO=list(page="https://en.wikipedia.org/wiki/Democracy_Index",
+               xpath='/html/body/div[3]/div[3]/div[5]/div[1]/table[6]')
+
+demo  = htmltab(doc = WhereDEMO$page, 
+               which  = WhereDEMO$xpath,
+               encoding = "UTF-8")
+
+#IDH:
+library(rio)
+DataIDH='https://github.com/taiyonoJoel/CONTROL_3/raw/main/HDR21-22_Statistical_Annex_HDI_Table.csv'
+idh=import(DataIDH)
+```
+
+## 1.2 Limpieza demo
+
+```{r}
+#seleccionando columns
+demo=demo[,-c(1,2,6)]
+
+# recombrando columns
+newDemo=c("Pais","RegimeType","Score","Electoral","Functioning","participation","culture",'Civilliberties')
+
+names(demo)=newDemo
+
+# tipo de datos
+str(demo)
+```
+
+## 1.2 Formateo
+```{r}
+# formateo: texto a ordinal
+OrdinalVector=c('Authoritarian','Hybrid regime','Flawed democracy','Full democracy')
+
+demo$RegimeType=factor(demo$RegimeType,
+                          levels = OrdinalVector,
+                          ordered = T)
+
+demo[,3:8]=lapply(demo[,3:8],as.numeric)
+demo=demo[complete.cases(demo),]
+
+#IDH
+newIDH=c('Pais','EsperanzaVida','EscolaridadDuracion','EscolaridadPromedio','PBI')
+names(idh)=newIDH
+
+idh[,-1]=lapply(idh[,-1], as.numeric)
+idh=idh[complete.cases(idh[,-1]),]
+row.names(idh)=NULL # resetear numero de filas
+```
+
+#MERGE
+
+```{r}
+demo[,]=lapply(demo[,], trimws,whitespace = "[\\h\\v]")
+idh[,]=lapply(idh[,], trimws,whitespace = "[\\h\\v]") 
+
+
+idh$Pais= trimws(idh$Pais,whitespace = "[\\h\\v]")
+demo$Pais= trimws(demo$Pais,whitespace = "[\\h\\v]")
+```
+
+## 1.4 Merge
+
+```{r}
+idhdemo=merge(idh,demo)
+head(idhdemo)
+```
+
+  - Tenemos un data frame que integra diversas variables que quieren medir conceptos complejos (latentes). Vemos cómo usamos el análisis factorial.
+  
+  - EXPORTANDO DATAUNIFICADA:
+```{r}
+library(rio)
+export(idhdemo, "idhdemo.csv")
+```
