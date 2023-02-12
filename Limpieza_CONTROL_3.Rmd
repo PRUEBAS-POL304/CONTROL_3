@@ -21,7 +21,7 @@ demo  = htmltab(doc = WhereDEMO$page,
 
 #IDH:
 library(rio)
-DataIDH='https://github.com/taiyonoJoel/CONTROL_3/raw/main/HDR21-22_Statistical_Annex_HDI_Table.csv'
+DataIDH='https://github.com/luccemhu/CONTROL_3/raw/main/HDR21-22_Statistical_Annex_HDI_Table.csv'
 idh=import(DataIDH)
 ```
 
